@@ -3,14 +3,13 @@ pipeline {
   stages {
     stage('clone down') {
       agent {
-        node('swarm') {
-        
+        node('swarm') {  
+          steps {
+            stash name: 'code', excludes: '**/.git,**/.git/**'
           }
         }
-      steps {
-          stash name: 'code', excludes: '**/.git,**/.git/**'
-        }
       }
+    }
     stage('Parallel execution') {
       parallel {
         stage('Say Hello') {
