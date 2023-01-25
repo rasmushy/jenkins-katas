@@ -9,6 +9,7 @@ pipeline {
     stage('Say Hello') {
       steps {
         sh 'echo "hello world"'
+        sh 'ci/build-app.sh'
       }
     }
 
