@@ -10,17 +10,14 @@ pipeline {
       parallel {
         stage('say hello') {
           steps {
-            sh '''echo "hello world"
-'''
+            sh '''echo "hello world"'''
           }
         }
-
         stage('build app') {
           agent {
             docker {
               image 'gradle:6-jdk11'
             }
-
           }
           steps {
             unstash 'code'
@@ -31,10 +28,23 @@ pipeline {
             skipDefaultCheckout(true)
           }
         }
-
+        stage('test app') {
+          agent {
+            docker {
+              image 'gradle:6-jdk11'
+            }
+          }
+          steps {
+            unstash 'code'
+            sh 'ci/unit-test-app.sh'
+            junit 'app/build/test-results/test/TEST-*.xml'
+          }
+          options{
+            skipDefaultCheckout(true)
+          }
+        }
       }
     }
-
   }
   post {
     cleanup {
