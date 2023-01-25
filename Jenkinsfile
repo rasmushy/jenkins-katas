@@ -27,7 +27,7 @@ pipeline {
             archiveArtifacts 'app/build/libs/'
           }
           options {
-            skipDefaultCheckout(true)
+            skipDefaultCheckout()
           }
         }
 
