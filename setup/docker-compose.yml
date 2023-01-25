@@ -22,7 +22,7 @@ services:
   #  environment: 
   #    J_URL: jenkins:8080
   #    J_USR: admin
-  #   J_PSW: adminpassword
+  #   J_PSW: passy
   #    J_LABELS: swarm linux jdk11
   #  volumes: 
   #    - /var/run/docker.sock:/var/run/docker.sock
