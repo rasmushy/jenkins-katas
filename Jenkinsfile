@@ -2,12 +2,8 @@ pipeline {
   agent any
   stages {
     stage('clone down') {
-      agent {
-        node('swarm') {  
           steps {
             stash name: 'code', excludes: '**/.git,**/.git/**'
-          }
-        }
       }
     }
     stage('Parallel execution') {
