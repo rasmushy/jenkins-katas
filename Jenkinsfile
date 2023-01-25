@@ -26,7 +26,6 @@ pipeline {
             unstash 'code'
             sh 'ci/build-app.sh'
             archiveArtifacts 'app/build/libs/'
-
           }
           options{
             skipDefaultCheckout(true)
